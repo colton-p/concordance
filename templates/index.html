@@ -1,0 +1,70 @@
+<html>
+    <head>
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    </head>
+
+<body>
+    <table>
+        <thead>
+            <th>Album</th>
+            <th>Tracks</th>
+            <th>Words</th>
+            <th>Unique</th>
+        </thead>
+        <tbody>
+            {% for row in album_counts %}
+            <tr>
+                <td>{{row.name}}</td>
+                <td>{{row.tracks}}</td>
+                <td>{{row.words}}</td>
+                <td>{{row.unique}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<hr>
+<p>
+{% for char in letter_anchors %}
+    <a href="#{{letter_anchors[char]}}">{{char}}</a>
+{% endfor %}
+</p>
+<hr>
+<input id="search" type="text"></input>
+<hr>
+
+{% for word in conc %}
+    <div id="{{word.word}}" class="word">
+        <h3 id="">{{word.word}}</h3>
+        <span>{{word.n_tracks}} songs; {{word.n_uses}} uses</span>
+        <ul>
+            {% for track in word.tracks %}
+                <li> {{track.title}} (<i>{{track.album}}</i>)</li>
+                <ul>
+                    {% for use in track.uses %}
+                    <li><b>{{use.pos}}</b> {{use.pre}}<code>{{use.word}}</code>{{use.post}}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+</ul>
+
+<script>
+    const search = document.getElementById('search');
+    search.oninput = () => {
+        const text = search.value;
+        Array.from(document.getElementsByClassName('word')).forEach(el => {
+            if (el.id.includes(text)) {
+                el.style.display = ''
+            } else {
+                el.style.display = 'none'
+            }
+        })
+    }
+
+</script>
+</body>
+
+</html>
