@@ -1,0 +1,54 @@
+[
+    {
+        "word": "art",
+        "tracks": [
+            {
+                "title": "\"Slut!\"",
+                "album": "1989",
+                "usages": [
+                    {
+                        "pos": "NOUN",
+                        "word": "art",
+                        "pre": "Boulevard. Clink, clink, being this young is",
+                        "post": "Aquamarine, moonlit swimmin pool."
+                    }
+                ]
+            },
+            {
+                "title": "willow",
+                "album": "evermore",
+                "usages": [
+                    {
+                        "pos": "NOUN",
+                        "word": "art",
+                        "pre": "Every bait-and-switch was a work of",
+                        "post": "The more that you say, the less"
+                    },
+                    {
+                        "pos": "NOUN",
+                        "word": "art",
+                        "pre": "Every bait-and-switch was a work of",
+                        "post": "That's my man"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "word": "applaud",
+        "tracks": [
+            {
+                "title": "champagne problems",
+                "album": "evermore",
+                "usages": [
+                    {
+                        "pos": "VERB",
+                        "word": "applauded",
+                        "pre": "Perignon, you brought it. No crowd of friends",
+                        "post": "Your hometown skeptics called it. Champagne problems"
+                    }
+                ]
+            }
+        ]
+    }
+]
