@@ -88,7 +88,7 @@ function App() {
 
   return (
     <>
-      <h2>(Taylor's Version) Concordance</h2>
+      <h2>The (Taylor's Version) Concordance</h2>
       <hr></hr>
       <div>
         <input id="search" type="text" value={prefix} onInput={onSearchInput}></input>
