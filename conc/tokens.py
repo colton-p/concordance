@@ -6,7 +6,7 @@ from spacy.language import Language
 from models import Track, TokenTrack
 from util import phase
 
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_trf")
 
 
 def tokenize(_artist, in_data: List[Track]):

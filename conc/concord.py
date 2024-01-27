@@ -8,8 +8,7 @@ from spacy.tokens import Doc, Token
 from models import TokenTrack
 from util import phase
 
-nlp = spacy.load("en_core_web_sm")
-
+nlp = spacy.load("en_core_web_trf")
 
 def build_concordance(tracks: List[TokenTrack]) -> Dict[str, Dict[str, List[Token]]]:
     def good_tokens(tokens):
@@ -50,10 +49,16 @@ class OutputBuilder:
         }
 
     def track(self, track: TokenTrack, occs: List[Token]):
+        non_overlaps = []
+        for occ in occs:
+            if not non_overlaps or occ.i > non_overlaps[-1].i + 10:
+                non_overlaps += [occ]
+
+
         return {
             "title": track.title,
             "album": track.album,
-            "usages": [self.usage(track, occ) for occ in occs],
+            "usages": [self.usage(track, occ) for occ in non_overlaps],
         }
 
     def usage(self, track: TokenTrack, occ: Token):
@@ -61,8 +66,6 @@ class OutputBuilder:
         return {
             "pos": occ.pos_,
             "word": occ.text_with_ws,
-            # "pre": "".join([t.text_with_ws for t in doc[max(0, occ.i - 10) : occ.i]]),
-            # "post": "".join([t.text_with_ws for t in doc[occ.i + 1 : occ.i + 10]]),
             "pre": self.context(doc, occ.i, -10),
             "post": self.context(doc, occ.i, +10),
         }
