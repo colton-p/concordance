@@ -4,7 +4,7 @@ import Entries from './Entries.tsx';
 import { allPosFromEntries, filterEntries } from './transform.ts';
 import { RawEntry } from './types.ts';
 
-import conc_data from './assets/data.json'
+import conc_data from './assets/taylor.json'
 
 const posMap : { [index: string] : string } = {
   ADJ: 'adjective',
@@ -58,11 +58,6 @@ function PosRadio(props: { parts: string[], setPosFilter: (v: string) => void })
   );
 }
 
-// TODO: data processing
-// remove more intjs
-// something with laughin' --> laughing
-// de-dup adjacent usages?
-// strip pre and post
 function App() {
   const [prefix, setPrefix] = useState('a')
   const [posFilter, setPosFilter] = useState('')
