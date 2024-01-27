@@ -3,6 +3,8 @@ import { Usage, Track, Entry } from './types.ts'
 function Usage(props: { usage: Usage }) {
     const { usage } = props;
     const { pos, pre, word, post } = usage;
+
+    const pad = word.endsWith(' ') ? ' ' : ''
     return (
         <li>
             <span>
@@ -11,9 +13,8 @@ function Usage(props: { usage: Usage }) {
             &nbsp;
             <span>
                 {pre}
-                &nbsp;
-                <code>{word}</code>
-                &nbsp;
+                <code>{word.trimEnd()}</code>
+                {pad}
                 {post}
             </span>
         </li>

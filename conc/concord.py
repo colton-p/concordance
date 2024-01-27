@@ -60,7 +60,7 @@ class OutputBuilder:
         doc = track.doc
         return {
             "pos": occ.pos_,
-            "word": occ.text,
+            "word": occ.text_with_ws,
             # "pre": "".join([t.text_with_ws for t in doc[max(0, occ.i - 10) : occ.i]]),
             # "post": "".join([t.text_with_ws for t in doc[occ.i + 1 : occ.i + 10]]),
             "pre": self.context(doc, occ.i, -10),
