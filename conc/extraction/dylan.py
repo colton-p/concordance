@@ -48,7 +48,7 @@ def all_tracks():
         }
 
 def main():
-    with open('dylan.txt', 'w') as fp:
+    with open('dylan.txt', 'w', encoding="utf8") as fp:
         html = cached_get('https://www.bobdylan.com/songs/?may=filters&order=desc')
         for (title, album, href) in parse_index(html):
             print(title)

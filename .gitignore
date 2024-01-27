@@ -1,5 +1,2 @@
 __pycache__
 .vscode
-src/.cache
-src/data
-src/html

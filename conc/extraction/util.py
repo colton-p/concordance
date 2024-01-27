@@ -16,9 +16,10 @@ def url_key(url):
 def cached_get(url, force=False):
     path = f'.cache/{url_key(url)}'
     if os.path.exists(path) and not force:
-        return open(path, 'r').read()
+        return open(path, 'r', encoding='utf8').read()
 
-    result = requests.get(url).text
-    with open(path, 'w') as fp:
+    print('! get', url)
+    result = requests.get(url, timeout=20).text
+    with open(path, 'w', encoding='utf8') as fp:
         fp.write(result)
     return result
