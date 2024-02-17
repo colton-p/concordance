@@ -1,5 +1,10 @@
+# From https://vitejs.dev/guide/static-deploy
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
+
+env:
+  # Directory with vite app
+  VITE_DIR: 'client'
 
 on:
   # Runs on pushes targeting the default branch
@@ -29,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 'client'
+        working-directory: ${{ env.VITE_DIR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,7 +45,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json' 
+          cache-dependency-path: './${{ env.VITE_DIR }}/package-lock.json'
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -51,7 +56,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: './client/dist'
+          path: './${{ env.VITE_DIR }}/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
